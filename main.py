@@ -10,7 +10,7 @@ work_list = [contacts_list[1:]]
 persons = ''
 for person in work_list[0]:
   persons = persons + ','.join(person) + '\n'
-pattern = r"(\w+)\s*(\w*)\s*(\w*)\s*,(\w*)\s*(\w*),(\w*),(\w*)?,(\D*)?,((\+7|8)?\s?\(?(\d{3})\)?(\s|\-)?(\d{3})(\s|\-)?(\d{2})(\s|\-)?(\d{2})\s*\(?(доб.)?\s*(\d*)\)?\s*)?,([\w\.@]*)?\s*\n?"
+pattern = r"(\w+)\s*(\w*)\s*(\w*)\s*,(\w*)\s*(\w*),(\w*),(\w*)?,([^,]*)?,((\+7|8)?\s?\(?(\d{3})\)?(\s|\-)?(\d{3})(\s|\-)?(\d{2})(\s|\-)?(\d{2})\s*\(?(доб.)?\s*(\d*)\)?\s*)?,([\w\.@]*)?,?\n*"
 person_list = re.findall(pattern, persons)
 total_pattern = r"\1,\2\4,\3\5\6,\7,\8,+7(\11)\13-\15-\17 \18\19,\20,"
 result = re.sub(pattern, total_pattern, persons)
